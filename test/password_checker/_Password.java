@@ -18,4 +18,10 @@ public class _Password {
         assertThat(new Password().isValid("aAdfgh"), is(true));
         assertThat(new Password().isValid("asddgd"), is(false));
     }
+
+    @Test
+    public void password_should_have_at_least_one_lowercase_character() throws Exception {
+        assertThat(new Password().isValid("aAdfgh"), is(true));
+        assertThat(new Password().isValid("DDDDDD"), is(false));
+    }
 }

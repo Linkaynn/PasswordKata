@@ -2,7 +2,11 @@ package password_checker;
 
 public class Password {
     public boolean isValid(String password) {
-        return password.length() >= 6 && hasUpperCase(password);
+        return password.length() >= 6 && hasUpperCase(password) && hasLowerCase(password);
+    }
+
+    private boolean hasLowerCase(String password) {
+        return password.chars().mapToObj(value -> (char) value).anyMatch(character -> asciiValue(character) >=97 && asciiValue(character) <= 122);
     }
 
     private boolean hasUpperCase(String password) {
