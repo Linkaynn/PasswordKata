@@ -9,25 +9,26 @@ import static org.junit.Assert.assertThat;
 public class _Password {
     @Test
     public void password_should_have_at_least_6_chars_long() throws Exception {
-        assertThat(new Password().isValid("a2sdfGh"), is(true));
-        assertThat(new Password().isValid("asdfg"), is(false));
+        assertThat(new Password().isValid("a2sdfG_h"), is(true));
     }
 
     @Test
     public void password_should_have_at_least_one_uppercase_character() throws Exception {
-        assertThat(new Password().isValid("aA2dfgh"), is(true));
-        assertThat(new Password().isValid("asddgd"), is(false));
+        assertThat(new Password().isValid("aA2df_gh"), is(true));
     }
 
     @Test
     public void password_should_have_at_least_one_lowercase_character() throws Exception {
-        assertThat(new Password().isValid("aA3dfgh"), is(true));
-        assertThat(new Password().isValid("DDDDDD"), is(false));
+        assertThat(new Password().isValid("aA3d_fgh"), is(true));
     }
 
     @Test
     public void password_should_have_at_least_one_number() throws Exception {
-        assertThat(new Password().isValid("aA1dfgh"), is(true));
-        assertThat(new Password().isValid("DDDDsD"), is(false));
+        assertThat(new Password().isValid("aA_1dfgh"), is(true));
+    }
+
+    @Test
+    public void password_should_have_at_least_one_underscore() throws Exception {
+        assertThat(new Password().isValid("aA_1dfgh"), is(true));
     }
 }
