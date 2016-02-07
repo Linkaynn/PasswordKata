@@ -2,26 +2,23 @@ package password_checker;
 
 public class Password {
     public boolean isValid(String password) {
-        return password.length() >= 6 && hasUpperCase(password) && hasLowerCase(password) && hasANumber(password) && hasUnderscore(password);
+        return password.length() >= 6 && containsUppercase(password) && containsLowercase(password) && hasNumbers(password) && hasUnderscoreCharacter(password);
     }
 
-    private boolean hasUnderscore(String password) {
-        return password.chars().mapToObj(value -> (char) value).anyMatch(character -> character == '_');
+    private boolean hasUnderscoreCharacter(String password) {
+        return password.matches(".*._.*.");
     }
 
-    private boolean hasANumber(String password) {
-        return password.chars().mapToObj(value -> (char) value).anyMatch(character -> asciiValue(character) >=48 && asciiValue(character) <= 57);
+    private boolean hasNumbers(String password) {
+        return password.matches(".*.[0-9].*.");
     }
 
-    private boolean hasLowerCase(String password) {
-        return password.chars().mapToObj(value -> (char) value).anyMatch(character -> asciiValue(character) >=97 && asciiValue(character) <= 122);
+    private boolean containsLowercase(String password) {
+        return password.matches(".*.[a-z].*.");
     }
 
-    private boolean hasUpperCase(String password) {
-        return password.chars().mapToObj(value -> (char) value).anyMatch(character -> asciiValue(character) >=65 && asciiValue(character) <= 90);
+    private boolean containsUppercase(String password) {
+        return password.matches(".*.[A-Z].*.");
     }
 
-    private int asciiValue(int character) {
-        return character;
-    }
 }
