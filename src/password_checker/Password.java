@@ -6,6 +6,10 @@ public class Password {
     }
 
     private boolean hasUpperCase(String password) {
-        return password.chars().mapToObj(value -> (char) value).anyMatch(character -> (int) character >=65 && (int) character <= 90);
+        return password.chars().mapToObj(value -> (char) value).anyMatch(character -> asciiValue(character) >=65 && asciiValue(character) <= 90);
+    }
+
+    private int asciiValue(int character) {
+        return character;
     }
 }
